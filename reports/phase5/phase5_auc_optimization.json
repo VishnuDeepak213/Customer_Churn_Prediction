@@ -1,0 +1,16 @@
+{
+  "optimized_auc": 0.8500439174352218,
+  "target_auc": 0.89,
+  "meets_target": false,
+  "best_params": {
+    "n_estimators": 861,
+    "max_depth": 5,
+    "learning_rate": 0.019547514204456603,
+    "subsample": 0.81144645662038,
+    "colsample_bytree": 0.8722971823636438,
+    "min_child_weight": 9,
+    "gamma": 3.3531440368883647,
+    "reg_alpha": 1.0417803422153813,
+    "reg_lambda": 3.9723454607574347
+  }
+}

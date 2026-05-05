@@ -1,0 +1,23 @@
+{
+  "threshold": 0.05,
+  "features_checked": 3,
+  "features_with_drift": 0,
+  "drift_detected": false,
+  "details": {
+    "SeniorCitizen": {
+      "ks_statistic": 0.0,
+      "p_value": 1.0,
+      "is_drift": false
+    },
+    "tenure": {
+      "ks_statistic": 0.0,
+      "p_value": 1.0,
+      "is_drift": false
+    },
+    "MonthlyCharges": {
+      "ks_statistic": 0.0,
+      "p_value": 1.0,
+      "is_drift": false
+    }
+  }
+}

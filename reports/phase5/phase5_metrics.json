@@ -1,0 +1,16 @@
+{
+  "roc_auc": 0.8500439174352218,
+  "pr_auc": 0.6631657964465794,
+  "target_auc": 0.85,
+  "roc_auc_meets_target": true,
+  "confusion_matrix": [
+    [
+      931,
+      104
+    ],
+    [
+      171,
+      203
+    ]
+  ]
+}

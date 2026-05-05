@@ -1,0 +1,16 @@
+Feature,Importance
+Contract_Month-to-month,0.6834668
+tenure,0.38264957
+OnlineSecurity_No,0.23558618
+InternetService_Fiber optic,0.22097082
+MonthlyCharges,0.20888889
+Contract_Two year,0.16556302
+TechSupport_No,0.15972441
+PaymentMethod_Electronic check,0.14364189
+TotalCharges,0.11419624
+PaperlessBilling_No,0.096827656
+MultipleLines_No,0.08236156
+OnlineBackup_No,0.06396273
+StreamingMovies_Yes,0.052568197
+Contract_One year,0.03954861
+StreamingTV_Yes,0.034473296

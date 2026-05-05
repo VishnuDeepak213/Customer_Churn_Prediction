@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "rows": 7043,
+  "columns": 21,
+  "checks": {
+    "required_columns_present": true,
+    "row_count_positive": true,
+    "duplicate_customer_ids_zero": true,
+    "target_values_valid": true,
+    "no_high_null_columns": true
+  },
+  "details": {
+    "missing_columns": [],
+    "high_null_columns": [],
+    "duplicate_customer_ids": 0,
+    "invalid_target_values": 0
+  }
+}

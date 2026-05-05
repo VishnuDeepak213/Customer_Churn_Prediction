@@ -1,0 +1,72 @@
+# Churn Prediction Project Configuration
+
+database:
+  host: localhost
+  port: 5432
+  user: postgres
+  password: postgres
+  name: churn_db
+  raw_schema: raw_data
+  processed_schema: processed_data
+
+data:
+  test_size: 0.2
+  random_state: 42
+  target_column: Churn
+  stratify: true
+
+preprocessing:
+  handle_missing: true
+  missing_strategy_num: median
+  missing_strategy_cat: mode
+  outlier_removal: true
+  outlier_method: iqr
+  scale_features: true
+  scaler_type: standard
+  encode_categorical: true
+
+feature_engineering:
+  create_new_features: true
+  features_to_create:
+    - tenure_group
+    - monthly_charge_group
+    - total_charge_per_month
+    - contract_risk_score
+
+class_imbalance:
+  handle_imbalance: true
+  method: smote
+  sampling_strategy: 0.5
+
+model:
+  test_size: 0.2
+  cv_folds: 5
+  random_state: 42
+  stratified: true
+
+hyperparameter_tuning:
+  method: optuna
+  n_trials: 300
+  timeout: 3600
+  n_jobs: -1
+  sampler: tpe
+
+target_metrics:
+  auc_roc_min: 0.85
+  f1_min: 0.78
+  precision_min: 0.80
+
+mlflow:
+  tracking_uri: http://localhost:5000
+  experiment_name: churn-prediction
+  artifacts_dir: mlruns
+
+api:
+  host: 0.0.0.0
+  port: 8000
+  debug: false
+  workers: 4
+
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"

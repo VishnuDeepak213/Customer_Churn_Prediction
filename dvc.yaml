@@ -1,0 +1,38 @@
+stages:
+  validate_data:
+    cmd: python -m src.data_validation --input data/raw/Telco_Churn.csv --output reports/validation_report.json
+    deps:
+      - src/data_validation.py
+      - data/raw/Telco_Churn.csv
+    outs:
+      - reports/validation_report.json
+
+  train_model:
+    cmd: python train_and_save.py
+    deps:
+      - train_and_save.py
+      - src/data_ingestion.py
+      - src/preprocessing.py
+      - src/model_training.py
+      - src/class_imbalance.py
+      - data/raw/Telco_Churn.csv
+    outs:
+      - models/best_model.pkl
+      - models/preprocessor.pkl
+
+  drift_monitor:
+    cmd: python -m src.drift_monitoring --baseline data/raw/Telco_Churn.csv --current data/raw/Telco_Churn.csv --output reports/drift_report.json
+    deps:
+      - src/drift_monitoring.py
+      - data/raw/Telco_Churn.csv
+    outs:
+      - reports/drift_report.json
+
+  conditional_retrain:
+    cmd: python scripts/phase8_autoretrain.py --drift-report reports/drift_report.json --min-drifted-features 1
+    deps:
+      - scripts/phase8_autoretrain.py
+      - reports/drift_report.json
+      - train_and_save.py
+      - src/model_training.py
+      - src/preprocessing.py
