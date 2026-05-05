@@ -5,10 +5,12 @@ import plotly.graph_objects as go
 import sys
 import os
 
-# Add parent directory to path for imports
-base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if base_dir not in sys.path:
-    sys.path.insert(0, base_dir)
+# Add project root and dashboard directory to path for imports
+dashboard_dir = os.path.dirname(os.path.abspath(__file__))
+base_dir = os.path.dirname(dashboard_dir)
+for _p in [base_dir, dashboard_dir]:
+    if _p not in sys.path:
+        sys.path.insert(0, _p)
 
 from utils import load_model_and_data, make_prediction, get_model_metrics, detect_data_drift
 from sklearn.model_selection import train_test_split
