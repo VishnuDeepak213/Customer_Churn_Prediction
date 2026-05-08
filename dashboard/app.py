@@ -34,223 +34,141 @@ st.set_page_config(
 # ─────────────────────────────────────────────────────────────────────────────
 pio.templates.default = "plotly_white"
 
-BRAND_COLORS = [
-    "#0b5fff",
-    "#06b6d4",
-    "#ef4444",
-    "#f59e0b",
-    "#10b981"
-]
-
 # ─────────────────────────────────────────────────────────────────────────────
-# FIXED CSS
+# CUSTOM CSS
 # ─────────────────────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
 
-:root {
-    --bg-main-top: #f8fbff;
-    --bg-main-bottom: #eef6ff;
-
-    --bg-card: #ffffff;
-    --bg-card-soft: #f7fbff;
-
-    --text-main: #0f172a;
-    --text-secondary: #334155;
-
-    --heading: #0b5fff;
-
-    --border: rgba(15,23,42,0.10);
-
-    --accent: #0b5fff;
+/* GLOBAL */
+html, body, [class*="css"] {
+    font-family: 'Segoe UI', sans-serif;
 }
 
-/* MAIN APP */
+/* MAIN BACKGROUND */
 .stApp {
-    background: linear-gradient(
-        180deg,
-        var(--bg-main-top) 0%,
-        var(--bg-main-bottom) 100%
-    );
-
-    color: var(--text-main);
-
-    font-family: -apple-system,
-                 BlinkMacSystemFont,
-                 'Segoe UI',
-                 Roboto,
-                 Arial;
+    background-color: #f3f6fb;
 }
 
-/* HEADINGS */
-h1, h2, h3 {
-    color: var(--heading) !important;
-    font-weight: 700 !important;
+/* REMOVE STREAMLIT TOP SPACE */
+.block-container {
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 /* SIDEBAR */
 [data-testid="stSidebar"] {
-    background: linear-gradient(
-        180deg,
-        #ecf5ff 0%,
-        #e6f1ff 100%
-    ) !important;
-
-    border-right: 1px solid var(--border);
+    background-color: #ffffff;
+    border-right: 1px solid #e5e7eb;
 }
 
+/* SIDEBAR TEXT */
 [data-testid="stSidebar"] * {
-    color: var(--text-main) !important;
-}
-
-/* METRIC CARDS */
-[data-testid="metric-container"] {
-
-    background: linear-gradient(
-        180deg,
-        #ffffff 0%,
-        #f7fbff 100%
-    ) !important;
-
-    border: 1px solid rgba(15,23,42,0.08);
-
-    padding: 18px !important;
-
-    border-radius: 14px;
-
-    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-
-}
-
-/* METRIC LABEL */
-[data-testid="metric-container"] label {
-
-    color: #334155 !important;
-
-    font-size: 15px !important;
-
-    font-weight: 600 !important;
-
-}
-
-/* METRIC VALUE */
-[data-testid="metric-container"] [data-testid="stMetricValue"] {
-
     color: #0f172a !important;
-
-    font-size: 32px !important;
-
-    font-weight: 700 !important;
-
 }
 
-/* METRIC DELTA */
-[data-testid="metric-container"] [data-testid="stMetricDelta"] {
+/* TITLE */
+.main-title {
+    font-size: 56px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 35px;
+}
 
-    color: #16a34a !important;
+/* SECTION TITLE */
+.section-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 
-    font-weight: 600 !important;
+/* DASHBOARD CARD */
+.dashboard-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 22px;
+    min-height: 130px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+}
 
+.dashboard-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+}
+
+/* CARD LABEL */
+.card-title {
+    font-size: 17px;
+    color: #334155;
+    margin-bottom: 16px;
+    font-weight: 500;
+}
+
+/* CARD VALUE */
+.card-value {
+    font-size: 42px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.1;
+}
+
+/* CARD SUBTEXT */
+.card-subtext {
+    margin-top: 10px;
+    font-size: 17px;
+    color: #475569;
+}
+
+/* GREEN TEXT */
+.green-text {
+    color: #16a34a;
+    font-weight: 600;
+}
+
+/* FEATURE LIST */
+.feature-box {
+    margin-top: 10px;
+}
+
+.feature-box ul {
+    padding-left: 24px;
+}
+
+.feature-box li {
+    margin-bottom: 14px;
+    font-size: 22px;
+    color: #0f172a;
 }
 
 /* BUTTON */
 .stButton > button {
-
-    background-color: var(--accent) !important;
-
+    background-color: #2563eb !important;
     color: white !important;
-
-    border-radius: 10px !important;
-
     border: none !important;
-
-    font-weight: 600 !important;
-
-    height: 48px;
-
+    border-radius: 12px !important;
+    height: 50px;
     font-size: 16px;
-
+    font-weight: 600;
 }
 
 /* INPUTS */
-[data-baseweb="select"] > div,
-.stNumberInput input {
-
-    background: white !important;
-
-    color: #0f172a !important;
-
-    border: 1px solid rgba(15,23,42,0.10) !important;
-
+.stTextInput input,
+.stNumberInput input,
+[data-baseweb="select"] > div {
     border-radius: 10px !important;
-
+    border: 1px solid #d1d5db !important;
 }
 
-/* INPUT LABELS */
-.stSelectbox label,
-.stNumberInput label {
-
-    color: #334155 !important;
-
-    font-weight: 600 !important;
-
-}
-
-/* SUCCESS BOX */
-.stSuccess {
-
-    background-color: rgba(16,185,129,0.12) !important;
-
-    color: #065f46 !important;
-
-}
-
-/* ERROR BOX */
-.stError {
-
-    background-color: rgba(239,68,68,0.10) !important;
-
-    color: #991b1b !important;
-
-}
-
-/* WARNING BOX */
-.stWarning {
-
-    background-color: rgba(245,158,11,0.12) !important;
-
-    color: #92400e !important;
-
-}
-
-/* INFO BOX */
-.stInfo {
-
-    background-color: rgba(59,130,246,0.10) !important;
-
-    color: #1e40af !important;
-
-}
-
-/* TABLE */
-table {
-
-    color: #0f172a !important;
-
-}
-
-/* GENERAL TEXT */
-p, span, div {
-
-    color: #0f172a;
-
-}
-
-/* BLOCK PADDING */
-.block-container {
-
-    padding-top: 1rem;
-
+/* METRICS */
+[data-testid="metric-container"] {
+    border-radius: 14px;
+    padding: 14px;
 }
 
 </style>
@@ -275,12 +193,13 @@ st.sidebar.info("Contact: ml-team@company.com")
 # ══════════════════════════════════════════════════════════════════════════════
 if page == "Home":
 
-    st.title("Welcome to Churn Prediction Dashboard")
-
-    st.write("")
+    st.markdown(
+        '<div class="main-title">Welcome to Churn Prediction Dashboard</div>',
+        unsafe_allow_html=True
+    )
 
     # ─────────────────────────────────────────────────────────
-    # TOP CARDS
+    # TOP ROW
     # ─────────────────────────────────────────────────────────
     col1, col2, col3 = st.columns(3)
 
@@ -298,7 +217,6 @@ if page == "Home":
         <div class="dashboard-card">
             <div class="card-title">Expected Performance</div>
             <div class="card-value">0.89</div>
-            <div class="card-subtext">AUC Score</div>
         </div>
         """, unsafe_allow_html=True)
 
@@ -313,11 +231,15 @@ if page == "Home":
 
     st.write("")
     st.write("")
+    st.write("")
 
     # ─────────────────────────────────────────────────────────
     # QUICK STATS
     # ─────────────────────────────────────────────────────────
-    st.markdown("## Quick Stats")
+    st.markdown(
+        '<div class="section-title">Quick Stats</div>',
+        unsafe_allow_html=True
+    )
 
     col1, col2, col3, col4 = st.columns(4)
 
@@ -356,20 +278,28 @@ if page == "Home":
 
     st.write("")
     st.write("")
+    st.write("")
 
     # ─────────────────────────────────────────────────────────
     # FEATURES
     # ─────────────────────────────────────────────────────────
-    st.markdown("## Features")
+    st.markdown(
+        '<div class="section-title">Features</div>',
+        unsafe_allow_html=True
+    )
 
     st.markdown("""
-    - **Single Prediction:** Predict churn for individual customers  
-    - **Batch Predictions:** Process multiple customers at once  
-    - **Analytics:** Dashboard with key metrics and visualizations  
-    - **Monitoring:** Real-time drift detection and alerts  
-    - **Export:** Download predictions and reports  
-    """)
-    
+    <div class="feature-box">
+    <ul>
+        <li><b>Single Prediction:</b> Predict churn for individual customers</li>
+        <li><b>Batch Predictions:</b> Process multiple customers at once</li>
+        <li><b>Analytics:</b> Dashboard with key metrics and visualizations</li>
+        <li><b>Monitoring:</b> Real-time drift detection and alerts</li>
+        <li><b>Export:</b> Download predictions and reports</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
+
 # ══════════════════════════════════════════════════════════════════════════════
 # PREDICTIONS PAGE
 # ══════════════════════════════════════════════════════════════════════════════
@@ -490,235 +420,3 @@ elif page == "Predictions":
 
         except Exception as e:
             st.error(f"Prediction Error: {e}")
-
-# ══════════════════════════════════════════════════════════════════════════════
-# ANALYTICS PAGE
-# ══════════════════════════════════════════════════════════════════════════════
-elif page == "Analytics":
-
-    st.title("Analytics Dashboard")
-
-    try:
-        model, preprocessor, df = load_model_and_data()
-
-        from sklearn.model_selection import train_test_split
-
-        df_clean = df.copy()
-
-        # Convert TotalCharges safely
-        df_clean['TotalCharges'] = pd.to_numeric(
-            df_clean['TotalCharges'],
-            errors='coerce'
-        )
-
-        df_clean.dropna(subset=['TotalCharges'], inplace=True)
-
-        # FIXED ERROR HERE
-        df_clean['Churn_label'] = (
-            df_clean['Churn']
-            .map({'Yes': 1, 'No': 0})
-            .astype(int)
-        )
-
-        feature_cols = [
-            c for c in df_clean.columns
-            if c not in [
-                'customerID',
-                'Churn',
-                'Churn_label'
-            ]
-        ]
-
-        X = preprocessor.transform(df_clean[feature_cols])
-
-        y = df_clean['Churn_label'].values
-
-        _, X_test, _, y_test = train_test_split(
-            X,
-            y,
-            test_size=0.2,
-            stratify=y,
-            random_state=42
-        )
-
-        metrics = get_model_metrics(
-            model,
-            X_test,
-            y_test
-        )
-
-        col1, col2, col3, col4, col5 = st.columns(5)
-
-        with col1:
-            st.metric(
-                "Accuracy",
-                f"{metrics['Accuracy']:.2%}"
-            )
-
-        with col2:
-            st.metric(
-                "AUC-ROC",
-                f"{metrics['AUC-ROC']:.4f}"
-            )
-
-        with col3:
-            st.metric(
-                "F1 Score",
-                f"{metrics['F1-Score']:.4f}"
-            )
-
-        with col4:
-            st.metric(
-                "Precision",
-                f"{metrics['Precision']:.2%}"
-            )
-
-        with col5:
-            st.metric(
-                "Recall",
-                f"{metrics['Recall']:.2%}"
-            )
-
-        st.divider()
-
-        # PIE CHART
-        col1, col2 = st.columns(2)
-
-        with col1:
-
-            churn_counts = df_clean['Churn'].value_counts()
-
-            fig = px.pie(
-                values=churn_counts.values,
-                names=churn_counts.index,
-                title="Customer Churn Distribution",
-                color_discrete_sequence=["#0068C9", "#EF553B"]
-            )
-
-            st.plotly_chart(
-                fig,
-                use_container_width=True
-            )
-
-        # BOX PLOT
-        with col2:
-
-            fig = px.box(
-                df_clean,
-                x="Churn",
-                y="tenure",
-                title="Tenure Distribution by Churn",
-                color="Churn",
-                color_discrete_sequence=BRAND_COLORS
-            )
-
-            st.plotly_chart(
-                fig,
-                use_container_width=True
-            )
-
-        # HISTOGRAM
-        fig = px.histogram(
-            df_clean,
-            x="MonthlyCharges",
-            color="Churn",
-            title="Monthly Charges Distribution",
-            barmode="overlay",
-            opacity=0.7,
-            color_discrete_sequence=BRAND_COLORS
-        )
-
-        st.plotly_chart(
-            fig,
-            use_container_width=True
-        )
-
-    except Exception as e:
-        st.error(f"Analytics Error: {e}")
-
-# ══════════════════════════════════════════════════════════════════════════════
-# MONITORING PAGE
-# ══════════════════════════════════════════════════════════════════════════════
-elif page == "Monitoring":
-
-    st.title("Real-time Monitoring")
-
-    try:
-
-        model, preprocessor, df = load_model_and_data()
-
-        st.subheader("Data Drift Detection")
-
-        df_reference = df.sample(
-            frac=0.1,
-            random_state=0
-        )
-
-        df_current = df.sample(
-            frac=0.1,
-            random_state=42
-        )
-
-        drift_report = detect_data_drift(
-            df_reference,
-            df_current
-        )
-
-        if drift_report:
-
-            drift_detected = any(
-                v['is_drift']
-                for v in drift_report.values()
-            )
-
-            if drift_detected:
-
-                st.error(
-                    "⚠️ DATA DRIFT DETECTED"
-                )
-
-            else:
-
-                st.success(
-                    "✅ No Significant Drift Detected"
-                )
-
-            drift_data = []
-
-            for k, v in drift_report.items():
-
-                drift_data.append({
-
-                    "Feature": str(k),
-
-                    "KS Statistic": round(
-                        v['statistic'],
-                        4
-                    ),
-
-                    "P-Value": round(
-                        v['p_value'],
-                        4
-                    ),
-
-                    "Drift": (
-                        "⚠️ Yes"
-                        if v['is_drift']
-                        else "✅ No"
-                    )
-                })
-
-            st.table(
-                pd.DataFrame(drift_data)
-            )
-
-        st.divider()
-
-        st.subheader("Alerts")
-
-        st.info("ℹ️ No critical alerts")
-
-        st.warning("⚠️ Performance stable")
-
-    except Exception as e:
-        st.error(f"Monitoring Error: {e}")
