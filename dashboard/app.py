@@ -277,69 +277,99 @@ if page == "Home":
 
     st.title("Welcome to Churn Prediction Dashboard")
 
-    st.markdown("### Model Overview")
+    st.write("")
 
+    # ─────────────────────────────────────────────────────────
+    # TOP CARDS
+    # ─────────────────────────────────────────────────────────
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.metric(
-            label="Model Type",
-            value="XGBoost Classifier"
-        )
+        st.markdown("""
+        <div class="dashboard-card">
+            <div class="card-title">Model Type</div>
+            <div class="card-value">XGBoost Classifier</div>
+            <div class="card-subtext">Production</div>
+        </div>
+        """, unsafe_allow_html=True)
 
     with col2:
-        st.metric(
-            label="Expected Performance",
-            value="0.89 AUC"
-        )
+        st.markdown("""
+        <div class="dashboard-card">
+            <div class="card-title">Expected Performance</div>
+            <div class="card-value">0.89</div>
+            <div class="card-subtext">AUC Score</div>
+        </div>
+        """, unsafe_allow_html=True)
 
     with col3:
-        st.metric(
-            label="System Status",
-            value="Active"
-        )
+        st.markdown("""
+        <div class="dashboard-card">
+            <div class="card-title">Status</div>
+            <div class="card-value">Active</div>
+            <div class="card-subtext green-text">Healthy</div>
+        </div>
+        """, unsafe_allow_html=True)
 
-    st.divider()
+    st.write("")
+    st.write("")
 
-    st.markdown("### Business Metrics")
+    # ─────────────────────────────────────────────────────────
+    # QUICK STATS
+    # ─────────────────────────────────────────────────────────
+    st.markdown("## Quick Stats")
 
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
-        st.metric(
-            label="Total Customers",
-            value="7,043"
-        )
+        st.markdown("""
+        <div class="dashboard-card">
+            <div class="card-title">Total Customers</div>
+            <div class="card-value">7,043</div>
+        </div>
+        """, unsafe_allow_html=True)
 
     with col2:
-        st.metric(
-            label="Churn Rate",
-            value="16.3%"
-        )
+        st.markdown("""
+        <div class="dashboard-card">
+            <div class="card-title">Churn Rate</div>
+            <div class="card-value">16.3%</div>
+            <div class="card-subtext green-text">↓ -2.1%</div>
+        </div>
+        """, unsafe_allow_html=True)
 
     with col3:
-        st.metric(
-            label="Average Tenure",
-            value="32.4 Months"
-        )
+        st.markdown("""
+        <div class="dashboard-card">
+            <div class="card-title">Avg Tenure</div>
+            <div class="card-value">32.4 months</div>
+        </div>
+        """, unsafe_allow_html=True)
 
     with col4:
-        st.metric(
-            label="Revenue At Risk",
-            value="$234.5K"
-        )
+        st.markdown("""
+        <div class="dashboard-card">
+            <div class="card-title">Revenue at Risk</div>
+            <div class="card-value">$234.5K</div>
+        </div>
+        """, unsafe_allow_html=True)
 
-    st.divider()
+    st.write("")
+    st.write("")
 
-    st.markdown("### Platform Features")
+    # ─────────────────────────────────────────────────────────
+    # FEATURES
+    # ─────────────────────────────────────────────────────────
+    st.markdown("## Features")
 
-    st.info("""
-    ✅ Single Customer Prediction  
-    ✅ Batch Predictions  
-    ✅ Real-time Analytics  
-    ✅ Drift Monitoring  
-    ✅ Export Reports  
+    st.markdown("""
+    - **Single Prediction:** Predict churn for individual customers  
+    - **Batch Predictions:** Process multiple customers at once  
+    - **Analytics:** Dashboard with key metrics and visualizations  
+    - **Monitoring:** Real-time drift detection and alerts  
+    - **Export:** Download predictions and reports  
     """)
+    
 # ══════════════════════════════════════════════════════════════════════════════
 # PREDICTIONS PAGE
 # ══════════════════════════════════════════════════════════════════════════════
