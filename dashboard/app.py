@@ -277,56 +277,69 @@ if page == "Home":
 
     st.title("Welcome to Churn Prediction Dashboard")
 
+    st.markdown("### Model Overview")
+
     col1, col2, col3 = st.columns(3)
 
     with col1:
         st.metric(
-            "Model Type",
-            "XGBoost Classifier"
+            label="Model Type",
+            value="XGBoost Classifier"
         )
 
     with col2:
         st.metric(
-            "Expected Performance",
-            "0.89"
+            label="Expected Performance",
+            value="0.89 AUC"
         )
 
     with col3:
         st.metric(
-            "Status",
-            "Active"
+            label="System Status",
+            value="Active"
         )
 
     st.divider()
 
-    st.subheader("Quick Stats")
+    st.markdown("### Business Metrics")
 
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
-        st.metric("Total Customers", "7,043")
+        st.metric(
+            label="Total Customers",
+            value="7,043"
+        )
 
     with col2:
-        st.metric("Churn Rate", "16.3%")
+        st.metric(
+            label="Churn Rate",
+            value="16.3%"
+        )
 
     with col3:
-        st.metric("Avg Tenure", "32.4 months")
+        st.metric(
+            label="Average Tenure",
+            value="32.4 Months"
+        )
 
     with col4:
-        st.metric("Revenue at Risk", "$234.5K")
+        st.metric(
+            label="Revenue At Risk",
+            value="$234.5K"
+        )
 
     st.divider()
 
-    st.subheader("Features")
+    st.markdown("### Platform Features")
 
-    st.markdown("""
-- Single Customer Prediction  
-- Batch Predictions  
-- Analytics Dashboard  
-- Monitoring & Drift Detection  
-- Export Reports  
-""")
-
+    st.info("""
+    ✅ Single Customer Prediction  
+    ✅ Batch Predictions  
+    ✅ Real-time Analytics  
+    ✅ Drift Monitoring  
+    ✅ Export Reports  
+    """)
 # ══════════════════════════════════════════════════════════════════════════════
 # PREDICTIONS PAGE
 # ══════════════════════════════════════════════════════════════════════════════
