@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
 import sys
 import os
 
@@ -11,8 +10,6 @@ if base_dir not in sys.path:
     sys.path.insert(0, base_dir)
 
 from utils import load_model_and_data, make_prediction, get_model_metrics, detect_data_drift
-from sklearn.model_selection import train_test_split
-from src.preprocessing import preprocess_pipeline
 
 # Page configuration
 st.set_page_config(
@@ -350,6 +347,9 @@ elif page == "Analytics":
     st.title("Analytics Dashboard")
     
     try:
+        from sklearn.model_selection import train_test_split
+        from src.preprocessing import preprocess_pipeline
+
         model, preprocessor, df = load_model_and_data()
         
         X, y, _ = preprocess_pipeline(df)
